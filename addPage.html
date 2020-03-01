@@ -1,0 +1,130 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New</title>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+        <a class="navbar-brand mr-5" href="#">CMS</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="my_menu.php" role="button">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="read.php" role="button">Customer Diary</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><span class="sr-only">(current)</span>Add Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="delete.php" role="button">Delete Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="update.php" role="button">Edit Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="uploadFile.php" role="button">Upload CSV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sendEmail.html" role="button">Broadcast Email</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="birthday.php" role="button">Birthday🎉</a>
+                </li>
+
+            </ul>
+            <div class="text-right mr-4">
+                <b id="logout"><a href="logout.php">Log Out</a></b>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <br>
+            <h2 class="ml-3">Add Customer 🕺</h2>
+        <br>
+        <form action="insertPage.php" method="POST">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <label for="fn">First Name</label>
+                    <input class="border border-primary rounded" type="text" name="fname" id="fn" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="ln">Last Name</label>
+                    <input class="border border-primary rounded" type="text" name="lname" id="ln" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="ph">Phone Number</label>
+                    <input class="border border-primary rounded" type="text" name="phone" id="ph" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="mail">Email</label>
+                    <input class="border border-primary rounded" type="text" name="email" id="mail" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="pc">Postal Code</label>
+                    <input class="border border-primary rounded" type="text" name="postal" id="pc" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="pro">Provice</label>
+                    <input class="border border-primary rounded" type="text" name="province" id="pro" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input class="border border-primary rounded" type="text" name="cityName" id="city" required maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label for="sa">Street Address</label>
+                    <input class="border border-primary rounded" type="text" name="address" id="sa" required maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="birth">Date of Birth</label>
+                    <input class="border border-primary rounded" type="date" name="dob" placeholder="date" id="birth" required maxlength="20">
+                </div>
+                <div>
+                    <button class="btn btn-primary rounded" type="submit" name="addData">
+                        Submit
+                    </button>
+                    <a class="btn btn-outline-primary" href="my_menu.php">Cancel</a> 
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    
+</body>
+
+</html>
